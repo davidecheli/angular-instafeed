@@ -1,0 +1,10 @@
+.instafeed-item {
+    width: 100%;
+    padding: 5px;
+}
+
+.instafeed-item img {
+    max-width: 90%;
+    border-radius: 20px;
+    margin-left: 5%;
+}
