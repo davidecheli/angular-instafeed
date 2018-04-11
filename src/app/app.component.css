@@ -1,3 +1,7 @@
+#instaFeed-body {
+    transition: .3s all;
+}
+
 .instafeed-list {
     display: flex;
     width: 100%;

@@ -16,6 +16,7 @@ export class InstaFeedService {
 
   iframeSizeEvent() {
       window.parent.postMessage(document.getElementById('instaFeed-body').offsetHeight+13, '*');
+      setTimeout(window.parent.postMessage(document.getElementById('instaFeed-body').offsetHeight+13, '*'), 2000);
       window.addEventListener("resize", function(){
         window.parent.postMessage(document.getElementById('instaFeed-body').offsetHeight+13, '*');
       });
