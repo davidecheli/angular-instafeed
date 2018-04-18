@@ -1,6 +1,6 @@
 <div class="instafeed-item">
   <a href="#" (click)="goToPost(item.shortcode)">
-      <img [src]="item.thumbnail_src">
+      <img [src]="item.thumbnail_src" (load)="iframeResize()">
   </a>
 </div>
 

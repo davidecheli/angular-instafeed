@@ -11,7 +11,6 @@ export class InstaFeedComponent implements OnInit {
   @Input()
   set ready(isReady: boolean) {
     if (isReady) {
-      this.instaFeedService.iframeSizeEvent();
       this.instaFeedService.loading='hide';
     };
   }
@@ -19,6 +18,10 @@ export class InstaFeedComponent implements OnInit {
   constructor(public instaFeedService: InstaFeedService) { }
 
   ngOnInit() {
+  }
+
+  iframeResize() {
+    this.instaFeedService.iframeSizeEvent();
   }
 
   goToPost(_shortcode: string) {

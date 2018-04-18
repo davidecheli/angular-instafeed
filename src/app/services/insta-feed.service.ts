@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class InstaFeedService {
   private instagramUrl = 'https://www.instagram.com/';
-  private instagramAfterUrl = '/?__a=1';
+  private apiUrl = 'https://apinsta.herokuapp.com/u/';
   public feedEntries;
   public userData;
   public loading = 'show';
@@ -15,10 +15,17 @@ export class InstaFeedService {
   }
 
   iframeSizeEvent() {
-      window.parent.postMessage(document.getElementById('instaFeed-body').offsetHeight+13, '*');
-      setTimeout(window.parent.postMessage(document.getElementById('instaFeed-body').offsetHeight+13, '*'), 2000);
+      const instaFeedBody = document.getElementById('instaFeed-body');
+      const offsetHeight = instaFeedBody.offsetHeight+13;
+      
+      let postMessage = (_height) => {
+        return window.parent.postMessage(_height, '*')
+      }
+
+      postMessage(offsetHeight);
+      setTimeout(postMessage(offsetHeight), 2000);
       window.addEventListener("resize", function(){
-        window.parent.postMessage(document.getElementById('instaFeed-body').offsetHeight+13, '*');
+        postMessage(offsetHeight);
       });
   }
 
@@ -29,7 +36,7 @@ export class InstaFeedService {
 
   getUserData() {
     let _username = this.getUsername();
-    return this.getJson(this.instagramUrl + _username + this.instagramAfterUrl).then(
+    return this.getJson(this.apiUrl + _username).then(
       data => {
         return {
           name: data['graphql']['user']['full_name'],
@@ -43,7 +50,7 @@ export class InstaFeedService {
   getFeed() {
     let _username = this.getUsername();
     this.getUsername();
-    return this.getJson(this.instagramUrl + _username + this.instagramAfterUrl).then(
+    return this.getJson(this.apiUrl + _username ).then(
       data => {
         return data['graphql']['user']['edge_owner_to_timeline_media']['edges'].slice(0,6)
       }

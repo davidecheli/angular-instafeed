@@ -2,7 +2,7 @@
   <!--<app-header></app-header>-->
   <div class="loader {{instaFeedService.loading}}"></div>
   <div class="instafeed-list">
-      <app-insta-feed *ngFor="let entry of feedEntries | async; let last = last" [item]="entry.node" [ready]="last ? false:true"></app-insta-feed>
+      <app-insta-feed *ngFor="let entry of feedEntries | async; let last = last" [item]="entry.node" [ready]="true"></app-insta-feed>
   </div>
 </div>
 
