@@ -1,27 +1,50 @@
 # AngularInstafeed
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
+This project was created to work as a widget for the Instagram feed usaing Angular.
 
-## Development server
+## How to use
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This application handle the query param `username` to create a widget with Instagram feed of the user.
 
-## Code scaffolding
+### Firebase demo
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+https://angular-instafeed.firebaseapp.com/?&username=davidecheli
 
-## Build
+### Widget iframe
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+You need to add some code to the `onload` to make the iframe be resized based on the size of the component:
+```html
+<iframe
+    id="instaFeed"
+    src="https://angular-instafeed.firebaseapp.com/?&username=davidecheli"
+    onload="window.addEventListener('message', function(event){getElementById('instaFeed').style.height=event.data+'px';}, false);"
+    style="width:100%;"
+    frameborder="0"
+></iframe>
+```
 
-## Running unit tests
+## Development enviroment
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* Install [Node.js](https://nodejs.org/)
+* Install Angular CLI:
+    ```
+    $ npm install -g @angular/cli
+    ```
+* Clone project:
+    ```bash
+    $ git clone https://github.com/davidecheli/angular-instafeed.git
+    ```
+* Access project folder:
+    ```
+    $ cd angular-instafeed
+    ```
+* Install all dependencies:
+    ```bash
+    $ npm install
+    ```
+* Run local server:
+    ```
+    $ npm serve
+    ```
+* Open the app on browser:
+    http://localhost:4200/?&username=davidecheli
