@@ -1,10 +1,10 @@
 # AngularInstafeed
 
-This project was created to work as a widget for the Instagram feed usaing Angular.
+This project was created to work as a widget for the Instagram feed using Angular.
 
 ## How to use
 
-This application handle the query param `username` to create a widget with Instagram feed of the user.
+This application handles the query param `username` to create a widget with the Instagram feed of the user.
 
 ### Firebase demo
 
@@ -23,7 +23,7 @@ You need to add some code to the `onload` to make the iframe be resized based on
 ></iframe>
 ```
 
-## Development enviroment
+## Development environment
 
 * Install [Node.js](https://nodejs.org/)
 * Install Angular CLI:
